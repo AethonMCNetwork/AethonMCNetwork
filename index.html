@@ -2,7 +2,8 @@
 <head>
   <meta charset="UTF-8">
   <title>AethonMC | Network Minecraft</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <style>
     :root{
       --bg:#070712;
       --panel:#0f0f25;
@@ -18,7 +19,6 @@
       color:var(--text);
     }
 
-    /* NAVBAR */
     nav{
       display:flex;
       align-items:center;
@@ -44,7 +44,6 @@
       box-shadow:0 0 25px rgba(124,58,237,.6);
     }
 
-    /* HERO */
     .hero{
       text-align:center;
       padding:7rem 2rem 6rem;
@@ -63,7 +62,6 @@
       font-size:1.15rem;
     }
 
-    /* JOIN */
     .join{
       max-width:900px;
       margin:0 auto 6rem;
@@ -84,7 +82,6 @@
     }
     .ip span{color:var(--accent2)}
 
-    /* STAFF */
     .staff{
       max-width:1200px;
       margin:0 auto 6rem;
@@ -120,61 +117,102 @@
       background:linear-gradient(135deg,var(--accent),var(--accent2));
     }
 
+    /* INFO SECTIONS */
+    .info{
+      max-width:1100px;
+      margin:0 auto 6rem;
+      padding:0 2rem;
+      text-align:center;
+    }
+    .info h2{
+      font-size:2.6rem;
+      margin-bottom:2rem;
+    }
+    .info p{
+      max-width:800px;
+      margin:0 auto 1.8rem;
+      color:var(--muted);
+      font-size:1.1rem;
+      line-height:1.7;
+    }
+
     footer{
       text-align:center;
       padding:2.8rem;
       color:var(--muted);
     }
-  </style></head>
-<body><nav>
+  </style>
+</head>
+
+<body>
+
+<nav>
   <img src="logo.png" alt="AethonMC">
   <div class="nav-links">
     <a href="index.html">Home</a>
     <a href="status.html">Status</a>
     <a href="store.html" class="btn">Store</a>
   </div>
-</nav><section class="hero">
+</nav>
+
+<section class="hero">
   <h1>AethonMC</h1>
   <p>Un network Minecraft oscuro, competitivo ed epico. Lifesteal, potere e dominio assoluto.</p>
   <a href="store.html" class="btn">Vai allo Store</a>
-</section><section class="join">
+</section>
+
+<section class="join">
   <h2>Join Now</h2>
   <p>Clicca per copiare l'IP ed entra subito</p>
   <div class="ip" onclick="copyIP()">aethonmc.<span>falixsrv.me</span></div>
-</section><section class="staff">
+</section>
+
+<section class="staff">
   <h2>Il nostro Staff</h2>
   <div class="staff-grid">
-    <div class="staff-card">
-      <span class="role">Founder & CEO</span>
-      <h3>NumberDuck95471</h3>
-    </div>
-    <div class="staff-card">
-      <span class="role">Founder</span>
-      <h3>Congiunzione</h3>
-    </div>
-    <div class="staff-card">
-      <span class="role">Owner</span>
-      <h3>mirkolend</h3>
-    </div>
-    <div class="staff-card">
-      <span class="role">Sr. Admin</span>
-      <h3>SALVX_30052</h3>
-    </div>
-    <div class="staff-card">
-      <span class="role">Admin</span>
-      <h3>Thoms549</h3>
-    </div>
-    <div class="staff-card">
-      <span class="role">Helper</span>
-      <h3>Mohamed13bit</h3>
-    </div>
+    <div class="staff-card"><span class="role">Founder & CEO</span><h3>NumberDuck95471</h3></div>
+    <div class="staff-card"><span class="role">Founder</span><h3>Congiunzione</h3></div>
+    <div class="staff-card"><span class="role">Owner</span><h3>mirkolend</h3></div>
+    <div class="staff-card"><span class="role">Sr. Admin</span><h3>SALVX_30052</h3></div>
+    <div class="staff-card"><span class="role">Admin</span><h3>Thoms549</h3></div>
+    <div class="staff-card"><span class="role">Helper</span><h3>Mohamed13bit</h3></div>
   </div>
-</section><footer>
+</section>
+
+<!-- SEZIONI AGGIUNTE -->
+<section class="info">
+  <h2>Modalità Lifesteal</h2>
+  <p>
+    In Lifesteal ogni uccisione conta: quando elimini un player rubi un cuore,
+    rendendoti più forte. Ma attenzione… morire significa perderne uno.
+    PvP intenso, strategie e tradimenti sono all’ordine del giorno.
+  </p>
+
+  <h2>Cosa si fa su AethonMC</h2>
+  <p>
+    Combatti, raid, costruisci alleanze o distruggile. Su AethonMC
+    la sopravvivenza è una guerra continua dove solo i più forti dominano.
+    Nessuna safe-zone, nessuna pietà.
+  </p>
+
+  <h2>Chi siamo</h2>
+  <p>
+    AethonMC nasce dalla passione per il PvP hardcore e le modalità competitive.
+    Il nostro obiettivo è creare un network oscuro, bilanciato e sempre attivo,
+    dove ogni scelta ha conseguenze.
+  </p>
+</section>
+
+<footer>
   © 2026 AethonMC Network — All Rights Reserved
-</footer><script>
+</footer>
+
+<script>
   function copyIP(){
     navigator.clipboard.writeText("aethonmc.falixsrv.me");
     alert("IP copiato!");
   }
-</script></body>
+</script>
+
+</body>
 </html>

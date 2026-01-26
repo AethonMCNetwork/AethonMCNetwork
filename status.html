@@ -2,42 +2,143 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<title>Status • AethonMC</title>
+<title>Status | AethonMC</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
+:root{
+  --bg:#070712;
+  --panel:#0f0f25;
+  --accent:#7c3aed;
+  --accent2:#ec4899;
+  --text:#f5f3ff;
+  --muted:#9ca3af;
+}
+
 body{
-  background:#0a0a14;
-  color:white;
-  font-family:Inter,system-ui;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  min-height:100vh;
+  margin:0;
+  font-family:Inter,system-ui,sans-serif;
+  background:radial-gradient(circle at top,#240046,var(--bg));
+  color:var(--text);
 }
+
+nav{
+  padding:1.2rem 2rem;
+}
+nav a{
+  color:var(--text);
+  text-decoration:none;
+  font-weight:600;
+}
+
+.container{
+  max-width:900px;
+  margin:4rem auto;
+  padding:2rem;
+}
+
 .card{
-  background:#121225;
-  padding:3rem;
-  border-radius:26px;
-  text-align:center;
-  box-shadow:0 0 40px rgba(124,58,237,.5);
+  display:flex;
+  gap:1.5rem;
+  background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.01));
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:25px;
+  padding:2rem;
+  align-items:center;
+  box-shadow:0 0 50px rgba(124,58,237,.4);
 }
-h1{
-  background:linear-gradient(135deg,#7c3aed,#ec4899);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
+
+.server-img{
+  width:120px;
+  height:120px;
+  border-radius:20px;
+  background:#000;
+  object-fit:cover;
+}
+
+.status{
+  font-size:1.3rem;
+  font-weight:800;
+}
+
+.online{color:#22c55e}
+.offline{color:#ef4444}
+
+.players{
+  margin-top:.6rem;
+  color:var(--muted);
+}
+
+.player-list{
+  margin-top:1rem;
+  display:flex;
+  flex-wrap:wrap;
+  gap:.6rem;
+}
+
+.player{
+  padding:.4rem .8rem;
+  background:rgba(255,255,255,.08);
+  border-radius:999px;
+  font-size:.85rem;
 }
 </style>
 </head>
 
 <body>
 
-<div class="card">
-  <h1>Status Server</h1>
-  <p>IP: <b>aethonmc.falixsrv.me</b></p>
+<nav>
+  <a href="index.html">← Torna alla Home</a>
+</nav>
 
-  <img src="https://api.mcstatus.io/v2/widget/java/aethonmc.falixsrv.me" alt="Server Status">
+<div class="container">
+  <div class="card">
+    <img id="serverIcon" class="server-img" src="" alt="Server Image">
+
+    <div>
+      <div id="status" class="status">Caricamento...</div>
+      <div id="players" class="players"></div>
+      <div id="playerList" class="player-list"></div>
+    </div>
+  </div>
 </div>
+
+<script>
+fetch("https://api.mcsrvstat.us/2/aethonmc.falixsrv.me")
+.then(res => res.json())
+.then(data => {
+
+  const statusEl = document.getElementById("status");
+  const playersEl = document.getElementById("players");
+  const listEl = document.getElementById("playerList");
+  const iconEl = document.getElementById("serverIcon");
+
+  if(data.online){
+    statusEl.innerHTML = "🟢 ONLINE";
+    statusEl.classList.add("online");
+    playersEl.innerText = `Player: ${data.players.online} / ${data.players.max}`;
+
+    if(data.icon){
+      iconEl.src = data.icon;
+    }
+
+    if(data.players.list){
+      data.players.list.forEach(p => {
+        const el = document.createElement("div");
+        el.className = "player";
+        el.innerText = p;
+        listEl.appendChild(el);
+      });
+    }
+  } else {
+    statusEl.innerHTML = "🔴 OFFLINE";
+    statusEl.classList.add("offline");
+    playersEl.innerText = "Server non raggiungibile";
+    iconEl.src = "offline.png"; // opzionale
+  }
+
+});
+</script>
 
 </body>
 </html>

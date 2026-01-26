@@ -52,8 +52,8 @@ nav a{
   width:120px;
   height:120px;
   border-radius:20px;
-  background:#000;
   object-fit:cover;
+  background:#000;
 }
 
 .status{
@@ -93,7 +93,8 @@ nav a{
 
 <div class="container">
   <div class="card">
-    <img id="serverIcon" class="server-img" src="" alt="Server Image">
+    <!-- FALLBACK IMMAGINE -->
+    <img id="serverIcon" class="server-img" src="server.png" alt="Server Image">
 
     <div>
       <div id="status" class="status">Caricamento...</div>
@@ -113,11 +114,16 @@ fetch("https://api.mcsrvstat.us/2/aethonmc.falixsrv.me")
   const listEl = document.getElementById("playerList");
   const iconEl = document.getElementById("serverIcon");
 
-  if(data.online){
-    statusEl.innerHTML = "🟢 ONLINE";
-    statusEl.classList.add("online");
-    playersEl.innerText = `Player: ${data.players.online} / ${data.players.max}`;
+  // reset
+  statusEl.classList.remove("online","offline");
+  listEl.innerHTML = "";
 
+  if(data.online){
+    statusEl.textContent = "🟢 ONLINE";
+    statusEl.classList.add("online");
+    playersEl.textContent = `Player: ${data.players.online} / ${data.players.max}`;
+
+    // icona server (base64)
     if(data.icon){
       iconEl.src = data.icon;
     }
@@ -126,17 +132,21 @@ fetch("https://api.mcsrvstat.us/2/aethonmc.falixsrv.me")
       data.players.list.forEach(p => {
         const el = document.createElement("div");
         el.className = "player";
-        el.innerText = p;
+        el.textContent = p;
         listEl.appendChild(el);
       });
     }
+
   } else {
-    statusEl.innerHTML = "🔴 OFFLINE";
+    statusEl.textContent = "🔴 OFFLINE";
     statusEl.classList.add("offline");
-    playersEl.innerText = "Server non raggiungibile";
-    iconEl.src = "offline.png"; // opzionale
+    playersEl.textContent = "Server non raggiungibile";
+    iconEl.src = "server.png"; // fallback fisso
   }
 
+})
+.catch(() => {
+  document.getElementById("status").textContent = "Errore di connessione";
 });
 </script>
 

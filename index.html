@@ -24,6 +24,11 @@
       align-items:center;
       justify-content:space-between;
       padding:1.2rem 2rem;
+      position:sticky;
+      top:0;
+      background:rgba(7,7,18,.85);
+      backdrop-filter:blur(10px);
+      z-index:100;
     }
     nav img{height:44px}
     .nav-links a{
@@ -42,45 +47,82 @@
     /* HERO */
     .hero{
       text-align:center;
-      padding:6rem 2rem 5rem;
+      padding:7rem 2rem 6rem;
     }
     .hero h1{
-      font-size:3.8rem;
+      font-size:4rem;
       font-weight:900;
       background:linear-gradient(135deg,var(--accent),var(--accent2));
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
     }
     .hero p{
-      margin:1.4rem auto 2.6rem;
-      max-width:640px;
+      margin:1.6rem auto 2.8rem;
+      max-width:680px;
       color:var(--muted);
-      font-size:1.1rem;
+      font-size:1.15rem;
     }
 
     /* JOIN */
     .join{
       max-width:900px;
       margin:0 auto 6rem;
-      background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.01));
-      border:1px solid rgba(255,255,255,.1);
-      border-radius:30px;
-      padding:3.5rem 2rem;
+      background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.01));
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:32px;
+      padding:3.8rem 2rem;
       text-align:center;
-      box-shadow:0 0 60px rgba(124,58,237,.45);
+      box-shadow:0 0 70px rgba(124,58,237,.45);
     }
-    .join h2{font-size:2.4rem}
+    .join h2{font-size:2.5rem}
     .ip{
-      margin-top:1.5rem;
-      font-size:1.6rem;
-      font-weight:800;
+      margin-top:1.6rem;
+      font-size:1.7rem;
+      font-weight:900;
       cursor:pointer;
+      letter-spacing:1px;
     }
     .ip span{color:var(--accent2)}
 
+    /* STAFF */
+    .staff{
+      max-width:1200px;
+      margin:0 auto 6rem;
+      padding:0 2rem;
+      text-align:center;
+    }
+    .staff h2{
+      font-size:2.6rem;
+      margin-bottom:3rem;
+    }
+    .staff-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:2.5rem;
+    }
+    .staff-card{
+      background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.01));
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:26px;
+      padding:2.6rem 2rem;
+      box-shadow:0 0 45px rgba(124,58,237,.35);
+    }
+    .staff-card h3{
+      margin-top:1rem;
+      font-size:1.3rem;
+    }
+    .role{
+      display:inline-block;
+      padding:.35rem 1rem;
+      border-radius:999px;
+      font-size:.8rem;
+      font-weight:800;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+    }
+
     footer{
       text-align:center;
-      padding:2.5rem;
+      padding:2.8rem;
       color:var(--muted);
     }
   </style></head>
@@ -99,6 +141,34 @@
   <h2>Join Now</h2>
   <p>Clicca per copiare l'IP ed entra subito</p>
   <div class="ip" onclick="copyIP()">aethonmc.<span>falixsrv.me</span></div>
+</section><section class="staff">
+  <h2>Il nostro Staff</h2>
+  <div class="staff-grid">
+    <div class="staff-card">
+      <span class="role">Founder & CEO</span>
+      <h3>NumberDuck95471</h3>
+    </div>
+    <div class="staff-card">
+      <span class="role">Founder</span>
+      <h3>Congiunzione</h3>
+    </div>
+    <div class="staff-card">
+      <span class="role">Owner</span>
+      <h3>mirkolend</h3>
+    </div>
+    <div class="staff-card">
+      <span class="role">Sr. Admin</span>
+      <h3>SALVX_30052</h3>
+    </div>
+    <div class="staff-card">
+      <span class="role">Admin</span>
+      <h3>Thoms549</h3>
+    </div>
+    <div class="staff-card">
+      <span class="role">Helper</span>
+      <h3>Mohamed13bit</h3>
+    </div>
+  </div>
 </section><footer>
   © 2026 AethonMC Network — All Rights Reserved
 </footer><script>
